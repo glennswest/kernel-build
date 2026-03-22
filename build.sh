@@ -52,7 +52,7 @@ make defconfig 2>&1 | tail -3
 
 echo ">>> Applying config fragment..."
 # Merge fragment into .config
-SCRIPT_DIR="$(cd /build && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 if [ -f "$SCRIPT_DIR/config.fragment" ]; then
     scripts/kconfig/merge_config.sh -m .config "$SCRIPT_DIR/config.fragment" 2>&1 | tail -10
 else
