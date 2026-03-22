@@ -5,7 +5,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 echo "=== Linux Kernel Build ==="
-echo "Host: $(hostname)"
+echo "Host: $(uname -n)"
 echo "Date: $(date -u)"
 echo "CPUs: $(nproc)"
 echo "Arch: $(uname -m)"
