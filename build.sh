@@ -13,11 +13,20 @@ echo ""
 
 # Install build dependencies
 echo ">>> Installing build dependencies..."
-dnf install -y \
-    gcc make flex bison bc perl \
-    elfutils-libelf-devel openssl-devel ncurses-devel \
-    diffutils findutils xz cpio kmod \
-    wget tar gzip 2>&1 | tail -5
+if command -v dnf &>/dev/null; then
+    dnf install -y \
+        gcc make flex bison bc perl hostname \
+        elfutils-libelf-devel openssl-devel ncurses-devel \
+        diffutils findutils xz cpio kmod \
+        wget tar gzip 2>&1 | tail -5
+elif command -v apt-get &>/dev/null; then
+    apt-get update -qq
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+        gcc make flex bison bc perl \
+        libelf-dev libssl-dev libncurses-dev \
+        diffutils findutils xz-utils cpio kmod \
+        wget tar gzip 2>&1 | tail -5
+fi
 echo ">>> Dependencies installed"
 
 # Determine latest stable kernel version from kernel.org
