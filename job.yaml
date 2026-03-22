@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Job
+metadata:
+  name: kernel-build
+  namespace: default
+spec:
+  pool: build
+  priority: 10
+  repo: https://github.com/glennswest/kernel-build
+  buildScript: build.sh
+  buildImage: registry.gt.lo:5000/rawhidedev:latest
+  timeout: 10800
