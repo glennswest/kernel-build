@@ -1,0 +1,45 @@
+# Kernel config fragment for mkube build test
+# Applied on top of defconfig, then resolved with make olddefconfig
+
+# io_uring (required for stormblock)
+CONFIG_IO_URING=y
+
+# NVMe
+CONFIG_NVME_CORE=y
+CONFIG_BLK_DEV_NVME=y
+
+# SCSI
+CONFIG_SCSI=y
+CONFIG_BLK_DEV_SD=y
+
+# SATA
+CONFIG_ATA=y
+CONFIG_SATA_AHCI=y
+
+# Virtio (for VMs)
+CONFIG_VIRTIO=y
+CONFIG_VIRTIO_PCI=y
+CONFIG_VIRTIO_BLK=y
+CONFIG_VIRTIO_NET=y
+
+# Network drivers
+CONFIG_E1000E=y
+CONFIG_IGB=y
+CONFIG_IXGBE=y
+CONFIG_MLX5_CORE=y
+
+# Filesystems
+CONFIG_EXT4_FS=y
+CONFIG_XFS_FS=y
+CONFIG_BTRFS_FS=y
+
+# VFIO (for stormblock NVMe passthrough)
+CONFIG_VFIO=y
+CONFIG_VFIO_PCI=y
+
+# Block devices
+CONFIG_BLK_DEV_LOOP=y
+CONFIG_BLK_DEV_DM=y
+
+# Modules
+CONFIG_MODULES=y
